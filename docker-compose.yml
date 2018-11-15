@@ -1,0 +1,34 @@
+version: '2.2'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.5.0
+    container_name: elasticsearch
+    environment: 
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+     memlock:
+       soft: -1
+       hard: -1
+    volumes:
+      - /home/docker/compose/elasticsearch/data:/usr/shar/elasticsearch/data
+      - /home/docker/compose/elasticsearch/es1.yml:/user/share/elasticsearch/conf/elasticsearch.yml
+    ports:
+      - 9200:9200
+  mysql:
+    image: 'docker.io/mysql:5.7.21'
+    restart: always
+    container_name: mysql
+    volumes:
+      - /home/docker/compose/mysql/data:/var/lib/mysql
+      - /home/docker/compose/mysql/conf:/etc/mysql
+    ports:
+      - 33006:3306
+    command: [
+        '--character-set-server=utf8mb4',
+        '--collation-server=utf8mb4_unicode_ci',
+        '--default-authentication-plugin=mysql_native_password'
+    ]
+    environment:
+      MYSQL_ROOT_PASSWORD: 'GySoft2018'
