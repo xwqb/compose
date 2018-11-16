@@ -8,6 +8,7 @@ services:
       - /home/docker/compose/nginx/logs:/var/log/nginx
       - /home/docker/compose/nginx/conf:/etc/nginx
       - /home/docker/compose/nginx/html:/usr/share/nginx/html
+      - /etc/localtime:/etc/localtime:ro
     ports:
       - 80:80
       - 443:443
@@ -24,14 +25,16 @@ services:
        hard: -1
     volumes:
       - /home/docker/compose/elasticsearch/data:/usr/shar/elasticsearch/data
+      - /etc/localtime:/etc/localtime:ro
       - /home/docker/compose/elasticsearch/es1.yml:/user/share/elasticsearch/conf/elasticsearch.yml:ro
     ports:
       - 9200:9200
   mysql:
-    image: 'docker.io/mysql:5.7.21'
+    image: docker.io/mysql:5.7.21
     restart: always
     container_name: mysql
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /home/docker/compose/mysql/data:/var/lib/mysql
       - /home/docker/compose/mysql/conf:/etc/mysql
     ports:
