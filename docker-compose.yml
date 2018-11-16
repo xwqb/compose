@@ -1,5 +1,16 @@
 version: '2.2'
 services:
+  nginx: 
+    image: docker.io/nginx:1.14.1
+    container_name: nginx
+    restart: always
+    volumes:
+      - /home/docker/compose/nginx/logs:/var/log/nginx
+      - /home/docker/compose/nginx/conf:/etc/nginx
+      - /home/docker/compose/nginx/html:/usr/share/nginx/html
+    ports:
+      - 80:80
+      - 443:443
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.5.0
     container_name: elasticsearch
@@ -13,7 +24,7 @@ services:
        hard: -1
     volumes:
       - /home/docker/compose/elasticsearch/data:/usr/shar/elasticsearch/data
-      - /home/docker/compose/elasticsearch/es1.yml:/user/share/elasticsearch/conf/elasticsearch.yml
+      - /home/docker/compose/elasticsearch/es1.yml:/user/share/elasticsearch/conf/elasticsearch.yml:ro
     ports:
       - 9200:9200
   mysql:
