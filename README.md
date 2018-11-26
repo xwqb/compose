@@ -7,8 +7,10 @@ for example:
 #### nginx
 build your host file in `conf/conf.d` path,of course it include ssl certificate support
 #### redis
-you want's set your external ip in this redis cluster,you can update `custom_paramas.conf`
-and set `redis-password=yourpassword`,if you wan't the redis-cluster provide access to external network you can  set `redis-host=yourexternalipaddress`
+you want's set your external ip in this redis cluster,you can update `custom_paramas.conf` 
+set `redis-password=yourpassword` 
+if you wan't the redis-cluster provide access to external network you can  
+set `redis-host=yourexternalipaddress` 
 #### elasticsearch
 This elasticsearch service only a stand-alone instance,but it will help you build a demo service in your dev environment
 #### mysql
