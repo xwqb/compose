@@ -45,7 +45,7 @@ services:
         '--default-authentication-plugin=mysql_native_password'
     ]
     environment:
-      MYSQL_ROOT_PASSWORD: 'GySoft2018'
+      MYSQL_ROOT_PASSWORD: 'yourpassword'
   redis-cluster:
     build:
       context: redis
