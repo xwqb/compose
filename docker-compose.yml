@@ -1,4 +1,4 @@
-version: '2.2'
+version: '3.4'
 services:
   nginx: 
     image: docker.io/nginx:1.14.1
@@ -46,3 +46,11 @@ services:
     ]
     environment:
       MYSQL_ROOT_PASSWORD: 'GySoft2018'
+  redis-cluster:
+    build:
+      context: redis
+      dockerfile: Dockerfile
+    container_name: redis-cluster
+    volumes:
+     - /home/docker/compose/redis/data:/redis/cluster/work_spac
+    command: "/redis/cluster/build.sh"

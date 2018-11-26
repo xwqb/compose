@@ -10,9 +10,9 @@ echo "vm.max_map_count=262144" >> /tmp/system_sysctl.conf
 
 mv /tmp/system_sysctl.conf /etc/sysctl.conf
 
-sysctl -w vm.max_map_count=262144
+sudo sysctl -w vm.max_map_count=262144
 
-sysctl -a|grep vm.max_map_count
+sudo sysctl -a|grep vm.max_map_count
 
 mkdir -p elasticsearch
 
