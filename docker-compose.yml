@@ -46,6 +46,18 @@ services:
     ]
     environment:
       MYSQL_ROOT_PASSWORD: 'yourpassword'
+  gogs:
+    image: gogs/gogs
+    restart: always
+    container_name: gogs
+    depends_on: 
+      - mysql
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /home/docker/compose/gogs/data:/data
+    ports: 
+      - "3000:3000"
+      - "3022:22"
   redis-cluster:
     build:
       context: redis
