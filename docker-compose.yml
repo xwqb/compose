@@ -66,3 +66,17 @@ services:
     volumes:
      - /home/docker/compose/redis/data:/redis/cluster/work_spac
     command: "/redis/cluster/build.sh"
+  mongodb:
+     build:
+       context: mongo
+       dockerfile: Dockerfile
+     container_name: mongodb
+     restart: always
+     volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /home/docker/compose/mongo/work_spac:/home/mongodb/work_spac
+     ports:
+      - "27000:27000"
+      - "27001:27001"
+      - "27002:27002"
+     command: "/home/mongodb/startup.sh"
