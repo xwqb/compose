@@ -1,0 +1,26 @@
+systemLog:
+    destination: file
+    path: "${DIR}/${PORT}/logs/mongod.log"
+    logAppend: true
+storage:
+    dbPath: "${DIR}/${PORT}/data"
+    journal:
+        enabled: true
+storage:
+    wiredTiger:
+      engineConfig:
+        directoryForIndexes: true
+      collectionConfig: 
+        blockCompressor: zlib
+processManagement:
+    fork: true
+    pidFilePath: "${DIR}/${PORT}/mongod.pid"
+net:
+    bindIpAll: true
+    port: ${PORT}
+#security:
+#    keyFile: "${ACCESS}/access.key"
+#    authorization: enabled
+replication:
+    oplogSizeMB: 10000
+    replSetName: ${RSNAME}
