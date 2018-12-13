@@ -15,6 +15,10 @@ if you want to the redis-cluster provide access to external network you can  set
  You can set your password in this `docker-compose.yml`, but it not security,you should optimize this way!
 #### mogodb
  This docker image only support three nodes that 27000-27002,if you can build more nodes,you should update some file,this is standonle replSet in one machine,if there are many other machines,you need to modify some files to achieve the purpose, edit `mongo/custom_params.conf` set your host and password
+####
+ The gogs not  much has changed,According to the official website configuration start up `docker-compose up -d gogs`
+#### zookeeper
+ Edit `docker-compose.yml` modify your config set using `docker-compose up -d zoo1 zoo2 zoo3` start up your system
 
 ## Summary
- I'll keep updating more services,such as fastDFS,mongoDB,zookeeper,kafka,jenkins and gogs so on
+ I'll keep updating more services,such as fastDFS,kafka,and jenkins so on
