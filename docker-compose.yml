@@ -81,7 +81,7 @@ services:
       - "27002:27002"
      command: "/home/mongodb/startup.sh"
   zoo1:
-   image: zookeeper
+   image: registry.cn-hangzhou.aliyuncs.com/gy-team/zookeeper:3.4.13
    restart: always
    hostname: zoo1
    container_name: zoo1
@@ -95,7 +95,7 @@ services:
      ZOO_MY_ID: 1
      ZOO_SERVERS: server.1=0.0.0.0:2888:3888 server.2=zoo2:2888:3888 server.3=zoo3:2888:3888
   zoo2:
-   image: zookeeper
+   image: registry.cn-hangzhou.aliyuncs.com/gy-team/zookeeper:3.4.13
    restart: always
    hostname: zoo2
    container_name: zoo2
@@ -109,7 +109,7 @@ services:
      ZOO_MY_ID: 2
      ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=0.0.0.0:2888:3888 server.3=zoo3:2888:3888
   zoo3:
-   image: zookeeper
+   image: registry.cn-hangzhou.aliyuncs.com/gy-team/zookeeper:3.4.13
    restart: always
    hostname: zoo3
    container_name: zoo3
