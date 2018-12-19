@@ -24,12 +24,10 @@ COPY custom_params.conf /redis/cluster
 COPY redis-cluster.tmpl /redis/cluster
 COPY start-redis-cluster.sh /redis/cluster
 COPY shutdown-redis-cluster.sh /redis/cluster
-COPY trib-cluster.sh /redis/cluster
 
 
-EXPOSE 7000 7001 7002 7003 7004 7005
+#EXPOSE 7005 7006 7007 7008 7009 7010
 
-#CMD /redis/cluster/build.sh && /redis/cluster/start-redis-cluster.sh && tail -f /dev/null
-CMD echo "this is Docker file echo"
+ENTRYPOINT ["/redis/cluster/build.sh"]
 
 	 

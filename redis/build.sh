@@ -16,7 +16,18 @@ if [ ! "$PASS" ];then
 fi
 
 
-for dir in `seq 7000 7005`;do
+for line in `cat $pfile|grep "port"`;do
+ PORT=" "${line#*=}
+done
+
+if [ ! "$PORT" ];then
+ PORT="7000 7005 "
+else
+ PORT=${PORT/\-/" "}
+fi
+
+
+for dir in `seq $PORT`;do
  mkdir -p work_spac/$dir
  echo "mkdir -p dir -> $dir"
  PORT=$dir PASS=$PASS envsubst < $path/redis-cluster.tmpl > work_spac/$dir/redis-cluster_$dir.conf
@@ -24,7 +35,7 @@ done
 
 # start redis-cluster
 startRedisCluster(){
- for dir in `seq 7000 7005`;do
+ for dir in `seq $PORT`;do
   echo "$path/work_spac/$dir"
   cd $path/work_spac/$dir
   redis-server redis-cluster_$dir.conf
@@ -39,7 +50,7 @@ readParam(){
     if [[ $line =~ host.* ]];then
      host=${line#*=}
      if [[ $host ]];then
-      for port in `seq 7000 7005`;do
+      for port in `seq $PORT`;do
        cluster=$cluster" "$host:$port
       done
      fi
