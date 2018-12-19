@@ -18,10 +18,13 @@ WORKDIR /home/mongodb
 
 COPY tmpl/* tmpl/
 COPY custom_params.conf custom_params.conf
-COPY startup.sh startup.sh
+COPY docker-entrypoint.sh docker-entrypoint.sh
 COPY shutdown.sh shutdown.sh
 
 EXPOSE 27000 27001 27002
+
+ENTRYPOINT ["/home/mongodb/docker-entrypoint.sh"]
+#CMD ["docker-entrypoint.sh"]
 
 #CMD /home/mongodb/startup.sh && tail -f /dev/null
 #CMD tail -f /dev/null

@@ -82,7 +82,7 @@ echo -e "\033[32mrestart mongodb end\033[0m"
 
 echo -e "\033[32mnow you can connect your mongodb replSet ,over!\033[0m"
 
-echo inited=true > inited
+echo inited=true > work_spac/inited
 }
 
 shutdown_replSet(){
@@ -107,10 +107,12 @@ for dir in `seq 27000 27002`;do
 done
 }
 
-if [ -f "inited" ];then
+if [ -f "work_spac/inited" ];then
  start_replSet
  else
  build
 fi
 
-tail -f /dev/null
+exec "$@"
+#tail -f /dev/null
+#exec "$@"
