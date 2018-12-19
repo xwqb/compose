@@ -1,0 +1,46 @@
+version: '3.4'
+services:
+   zoo1:
+     image: registry.cn-hangzhou.aliyuncs.com/gy-team/zookeeper:3.4.13
+     restart: always
+     container_name: zoo1
+     volumes: 
+      - /home/docker/compose/zookeeper/zoo1/data:/data
+      - /home/docker/compose/zookeeper/zoo1/datalog:/datalog
+      - /home/docker/compose/zookeeper/zoo1/conf:/conf
+     ports:
+       - 2181:2181
+       - 2888:2888
+       - 3888:3888
+     environment:
+       ZOO_MY_ID: 1
+       ZOO_SERVERS: server.1=106.12.89.85:2888:3888 server.2=106.12.89.85:2889:3889 server.3=106.12.82.74:2888:3888
+   zoo2:
+     image: registry.cn-hangzhou.aliyuncs.com/gy-team/zookeeper:3.4.13
+     restart: always
+     container_name: zoo2
+     volumes: 
+      - /home/docker/compose/zookeeper/zoo2/data:/data
+      - /home/docker/compose/zookeeper/zoo2/datalog:/datalog
+      - /home/docker/compose/zookeeper/zoo2/conf:/conf
+     ports:
+       - 2182:2182
+       - 2889:2889
+       - 3889:3889
+     environment:
+       ZOO_MY_ID: 2
+       ZOO_SERVERS: server.1=106.12.89.85:2888:3888 server.2=106.12.89.85:2889:3889 server.3=106.12.82.74:2888:3888
+   zoo3:
+     image: zookeeper
+     restart: always
+     hostname: zoo3
+     container_name: zoo3
+     volumes:
+      - /home/docker/compose/zookeeper/zoo3/data:/data
+      - /home/docker/compose/zookeeper/zoo3/datalog:/datalog
+      - /home/docker/compose/zookeeper/zoo3/conf:/conf
+     ports:
+       - 2183:2181
+     environment:
+       ZOO_MY_ID: 3
+       ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=zoo2:2888:3888 server.3=0.0.0.0:2888:3888

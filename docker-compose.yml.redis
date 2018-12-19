@@ -1,0 +1,22 @@
+version: '3.4'
+services:
+  redis-cluster:
+    build:
+      context: redis
+      dockerfile: Dockerfile
+    container_name: redis-cluster
+    ports:
+     - 7005:7005
+     - 7006:7006
+     - 7007:7007
+     - 7008:7008
+     - 7009:7009
+     - 7010:7010
+     - 17005:17005
+     - 17006:17006
+     - 17007:17007
+     - 17008:17008
+     - 17009:17009
+     - 17010:17010
+    volumes:
+     - /home/docker/compose/redis/work_spac:/redis/cluster/work_spac

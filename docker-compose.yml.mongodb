@@ -1,0 +1,15 @@
+version: '3.4'
+services:
+  mongodb:
+     build:
+       context: mongo
+       dockerfile: Dockerfile
+     container_name: mongodb
+     volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /home/docker/compose/mongo/work_spac:/home/mongodb/work_spac
+     ports:
+      - "27000:27000"
+      - "27001:27001"
+      - "27002:27002"
+     command: "tail -f /dev/null"
