@@ -22,8 +22,6 @@ WORKDIR /redis/cluster
 COPY build.sh /redis/cluster
 COPY custom_params.conf /redis/cluster
 COPY redis-cluster.tmpl /redis/cluster
-COPY start-redis-cluster.sh /redis/cluster
-COPY shutdown-redis-cluster.sh /redis/cluster
 
 
 #EXPOSE 7005 7006 7007 7008 7009 7010
