@@ -5,6 +5,6 @@ services:
     container_name: redis-alone
     ports:
      - 6400:6379
-    command: "--requirepass 1qazxsw2 --appendonly yes"
+    command: "--requirepass yourpassword --appendonly yes"
     volumes:
      - /home/docker/compose/redis-alone/data:/data
