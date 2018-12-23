@@ -1,0 +1,10 @@
+version: '3.4'
+services:
+  redis-alone:
+    image: redis:5.0.3
+    container_name: redis-alone
+    ports:
+     - 6400:6379
+    command: "--requirepass 1qazxsw2 --appendonly yes"
+    volumes:
+     - /home/docker/compose/redis-alone/data:/data
