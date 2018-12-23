@@ -47,6 +47,7 @@ services:
        ZOO_MY_ID: 3
        ZOO_SERVERS: server.1=zoo1:2888:3888 server.2=zoo2:2888:3888 server.3=0.0.0.0:2888:3888
    kafka: 
+     container_name: kafak-alone
      image: wurstmeister/kafka
      volumes: 
       - /etc/localtime:/etc/localtime
@@ -59,9 +60,9 @@ services:
      environment: 
        KAFKA_ADVERTISED_HOST_NAME: yourhosts
        KAFKA_ZOOKEEPER_CONNECT: zoo1:2181,zoo2:2182,zoo3:2183
-   kafka-manager:  
-    image: sheepkiller/kafka-manager
-    environment:
-      ZK_HOSTS: yourhost
-    ports:  
-      - "9000:9000"
+#   kafka-manager:  
+#    image: sheepkiller/kafka-manager
+#    environment:
+#      ZK_HOSTS: yourhost
+#    ports:  
+#      - "9000:9000"
