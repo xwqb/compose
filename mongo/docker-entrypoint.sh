@@ -43,6 +43,8 @@ echo -e "\033[32mcreate replSet end!\033[0m"
 
 add_user
 
+init_access
+
 restart_mongodb
 
 }
@@ -59,13 +61,13 @@ init_access(){
 echo -e "\033[32minit access.key\033[0m"
 openssl rand -base64 756 > access.key
 chmod 400 access.key
+echo -e "\033[32mcreate access.key\033[0m"
 
 for dir in `seq 27000 27002`;do
- sed -i "s/\#    keyFile/     keyFile/g" $dir/work_spac/conf/mongodb.conf
- sed -i "s/\#security/security/g" $dir/work_spac/conf/mongodb.conf
- sed -i "s/\#    authorization/     authorization/g" $dir/work_spac/conf/mongodb.conf
+ sed -i "s/\#    keyFile/     keyFile/g" $path/work_spac/$dir/conf/mongodb.conf
+ sed -i "s/\#security/security/g" $path/work_spac/$dir/conf/mongodb.conf
+ sed -i "s/\#    authorization/     authorization/g" $path/work_spac/$dir/conf/mongodb.conf
 done
-sleep 500
 echo -e "\033[32minit access.key done\033[0m"
 }
 
