@@ -121,7 +121,7 @@ services:
       - "27000:27000"
       - "27001:27001"
       - "27002:27002"
-     command: "/home/mongodb/startup.sh"
+     command: "tail -f /dev/null"
   zoo1:
    image: registry.cn-hangzhou.aliyuncs.com/gy-team/zookeeper:3.4.13
    restart: always
