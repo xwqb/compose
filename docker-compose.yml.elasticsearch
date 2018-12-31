@@ -1,0 +1,53 @@
+version: '3.4'
+services:
+  elasticsearch-master:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.5.0
+    container_name: elasticsearch-master
+    environment: 
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - /home/docker/compose/elasticsearch/es1/data:/usr/shar/elasticsearch/data
+      - /home/docker/compose/elasticsearch/es1/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 9200:9200
+      - 9300:9300
+  elasticsearch-slave:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.5.0
+    container_name: elasticsearch-slave
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - /home/docker/compose/elasticsearch/es2/data:/usr/shar/elasticsearch/data
+      - /home/docker/compose/elasticsearch/es2/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 9201:9200
+      - 9301:9300
+    depends_on :
+      - elasticsearch-master
+#  elasticsearch-head:
+#    image: tobias74/elasticsearch-head:6
+#    container_name: elasticsearch-head
+#    restart: always
+#    environment:
+#        TZ: 'Asia/Shanghai'
+#    volumes:
+#      - /home/docker/compose/elasticsearch/head/Gruntfile.js:/usr/src/app/Gruntfile.js
+#      - /home/docker/compose/elasticsearch/head/app.js:/usr/src/app/_site/app.js
+#    ports: 
+#      - 9100:9100
+#    depends_on:
+#      - elasticsearch-slave

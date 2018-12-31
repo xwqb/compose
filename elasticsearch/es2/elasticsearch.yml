@@ -1,0 +1,13 @@
+cluster.name: "docker-cluster"
+network.host: 0.0.0.0
+node.name: node1
+node.master: false
+node.data: true
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+
+# minimum_master_nodes need to be explicitly set when bound on a public IP
+# set to 1 to allow single node clusters
+# Details: https://github.com/elastic/elasticsearch/pull/17288
+discovery.zen.minimum_master_nodes: 1
+discovery.zen.ping.unicast.hosts: elasticsearch-master
