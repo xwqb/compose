@@ -1,0 +1,12 @@
+version: '3.4'
+services:
+  gogs:
+    image: gogs/gogs
+    restart: always
+    container_name: gogs
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /home/docker/compose/gogs/data:/data
+    ports: 
+      - "3000:3000"
+      - "3022:22"
