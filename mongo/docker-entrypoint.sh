@@ -28,7 +28,7 @@ for dir in `seq 27000 27002`;do
   mkdir -p work_spac/$dir/data
   mkdir -p work_spac/$dir/conf
   mkdir -p work_spac/$dir/logs
-  PORT=$dir RSNAME=$rsname DIR=${path}/work_spac ACCESS=${path}  envsubst < $path/tmpl/conf.tmpl > $path/work_spac/$dir/conf/mongodb.conf
+  PORT=$dir RSNAME=$rsname DIR=${path}/work_spac ACCESS=${path}/work_spac  envsubst < $path/tmpl/conf.tmpl > $path/work_spac/$dir/conf/mongodb.conf
 done
 start_replSet
 init_replSet
@@ -59,8 +59,8 @@ add_user(){
 
 init_access(){
 echo -e "\033[32minit access.key\033[0m"
-openssl rand -base64 756 > access.key
-chmod 400 access.key
+openssl rand -base64 756 > $path/work_spac/access.key
+chmod 400 $path/work_spac/access.key
 echo -e "\033[32mcreate access.key\033[0m"
 
 for dir in `seq 27000 27002`;do
