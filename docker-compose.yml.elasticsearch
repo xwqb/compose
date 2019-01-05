@@ -12,7 +12,7 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - /home/docker/compose/elasticsearch/es1/data:/usr/shar/elasticsearch/data
+      - /home/docker/compose/elasticsearch/es1/data:/usr/share/elasticsearch/data
       - /home/docker/compose/elasticsearch/es1/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - /etc/localtime:/etc/localtime:ro
     ports:
@@ -30,7 +30,7 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - /home/docker/compose/elasticsearch/es2/data:/usr/shar/elasticsearch/data
+      - /home/docker/compose/elasticsearch/es2/data:/usr/share/elasticsearch/data
       - /home/docker/compose/elasticsearch/es2/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - /etc/localtime:/etc/localtime:ro
     ports:
