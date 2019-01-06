@@ -1,3 +1,2 @@
 use admin
-db.createUser({user: '${USER}',pwd: '${PASS}',roles:[{role:'readWriteAnyDatabase',db:'admin'},{role:'dbAdminAnyDatabase',db:'admin'},{role:'userAdminAnyDatabase',db:'admin'},{role:'clusterAdmin',db:'admin'}]})
-db.grantRolesToUser("${USER}", ["clusterAdmin"])
+db.createUser({user: '${USER}',pwd: '${PASS}',roles:[{role:'dbAdminAnyDatabase',db:'admin'},{role:'readWriteAnyDatabase',db:'admin'},{role:'userAdmin',db:'admin'},{role:'dbOwner',db:'admin'},{role:'clusterAdmin',db:'admin'},{role:'readAnyDatabase',db:'admin'},{role:'userAdminAnyDatabase',db:'admin'}]})
