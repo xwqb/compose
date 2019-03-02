@@ -1,0 +1,17 @@
+version: '3.4'
+services:
+   zoo1-alone:
+     image: registry.cn-hangzhou.aliyuncs.com/gy-team/zookeeper:3.4.13
+     restart: always
+     container_name: zoo1-alone
+     volumes: 
+      - /home/docker/compose/zookeeper/zoo1-alone/data:/data
+      - /home/docker/compose/zookeeper/zoo1-alone/datalog:/datalog
+      - /home/docker/compose/zookeeper/zoo1-alone/conf:/conf
+     ports:
+       - 2181:2181
+       - 2888:2888
+       - 3888:3888
+#     environment:
+#       ZOO_MY_ID: 1
+#       ZOO_SERVERS: server.1=106.12.89.85:2888:3888 server.2=106.12.89.85:2889:3889 server.3=106.12.82.74:2888:3888
