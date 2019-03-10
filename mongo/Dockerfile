@@ -8,9 +8,10 @@ ENV mongodb-version 4.0.4
 
 WORKDIR /home
 
-RUN wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.4.tgz \
-	&& tar -xzf mongodb-linux-x86_64-4.0.4.tgz \
-	&& mv mongodb-linux-x86_64-4.0.4 mongodb \
+COPY mongodb-linux-x86_64-4.0.6.tgz /home/
+
+RUN     tar -xzf mongodb-linux-x86_64-4.0.6.tgz \
+	&& mv mongodb-linux-x86_64-4.0.6 mongodb \
 	&& cd mongodb \
 	&& mkdir tmpl 
 
