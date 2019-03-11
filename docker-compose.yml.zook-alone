@@ -4,10 +4,10 @@ services:
      image: registry.cn-hangzhou.aliyuncs.com/gy-team/zookeeper:3.4.13
      restart: always
      container_name: zoo1-alone
-     volumes: 
-      - /home/docker/compose/zookeeper/zoo1-alone/data:/data
-      - /home/docker/compose/zookeeper/zoo1-alone/datalog:/datalog
-      - /home/docker/compose/zookeeper/zoo1-alone/conf:/conf
+#     volumes: 
+#      - /home/docker/compose/zookeeper/zoo1-alone/data:/data
+#      - /home/docker/compose/zookeeper/zoo1-alone/datalog:/datalog
+#      - /home/docker/compose/zookeeper/zoo1-alone/conf:/conf
      ports:
        - 2181:2181
        - 2888:2888
